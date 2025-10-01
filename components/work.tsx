@@ -4,8 +4,8 @@ import Image from "next/image"
 import { ArrowUpRight, Building2, HardHat } from "lucide-react"
 import { useEffect, useState, useRef } from "react"
 
-function useInView(options?: IntersectionObserverInit) {
-  const ref = useRef<HTMLElement | null>(null)
+function useInView<T extends Element = HTMLElement>(options?: IntersectionObserverInit) {
+  const ref = useRef<T | null>(null)
   const [inView, setInView] = useState(false)
 
   useEffect(() => {
@@ -31,11 +31,11 @@ export default function RealEstateSection() {
   const [globalCount, setGlobalCount] = useState<number>(0)
   const [localCount, setLocalCount] = useState<number>(0)
 
-  const [leftRef, leftIn] = useInView()
-  const [headingRef, headingIn] = useInView()
-  const [rightImgRef, rightImgIn] = useInView()
-  const [rightContentRef, rightContentIn] = useInView()
-  const [statsRef, statsIn] = useInView({ threshold: 0.3 })
+  const [leftRef, leftIn] = useInView<HTMLDivElement>()
+  const [headingRef, headingIn] = useInView<HTMLHeadingElement>()
+  const [rightImgRef, rightImgIn] = useInView<HTMLDivElement>()
+  const [rightContentRef, rightContentIn] = useInView<HTMLDivElement>()
+  const [statsRef, statsIn] = useInView<HTMLDivElement>({ threshold: 0.3 })
 
   useEffect(() => {
     if (!statsIn) return
@@ -70,7 +70,7 @@ export default function RealEstateSection() {
     <section className="bg-white flex flex-col lg:flex-row gap-6 lg:gap-10 px-4 sm:px-6 md:px-12 lg:px-20 py-8 sm:py-12">
       {/* left side  */}
       <div
-        ref={leftRef as any}
+        ref={leftRef}
         className={`flex flex-col justify-around text-center md:text-left w-full lg:w-auto lg:min-w-[400px] transition-all duration-700 ease-out [will-change:transform,opacity] ${
           leftIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
@@ -119,7 +119,7 @@ export default function RealEstateSection() {
       <div className="w-full mt-8 lg:mt-0">
         {/* Heading */}
         <h1
-          ref={headingRef as any}
+          ref={headingRef}
           className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-black max-w-3xl transition-all duration-700 ease-out [will-change:transform,opacity] ${
             headingIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
@@ -130,7 +130,7 @@ export default function RealEstateSection() {
         <div className="mt-6 sm:mt-8 lg:mt-10 flex flex-col lg:flex-row gap-6 lg:gap-12 items-start lg:items-center">
           {/* Left Image */}
           <div
-            ref={rightImgRef as any}
+            ref={rightImgRef}
             className={`w-full lg:w-auto flex justify-center lg:justify-start transition-all duration-700 ease-out [will-change:transform,opacity] ${
               rightImgIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
@@ -146,7 +146,7 @@ export default function RealEstateSection() {
 
           {/* Right Content */}
           <div
-            ref={rightContentRef as any}
+            ref={rightContentRef}
             style={{ transitionDelay: rightImgIn ? "120ms" : "0ms" }}
             className={`space-y-6 sm:space-y-8 w-full transition-all duration-700 ease-out [will-change:transform,opacity] ${
               rightContentIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
@@ -165,13 +165,13 @@ export default function RealEstateSection() {
             <div>
               <h2 className="text-lg sm:text-xl font-bold text-black">Our mission</h2>
               <p className="text-gray-600 mt-2 text-sm sm:text-base">
-                Our solutions are designed to meet the needs of modern enterprises, ensuring they thrive in today's
+                Our solutions are designed to meet the needs of modern enterprises, ensuring they thrive in today&apos;s
                 competitive online landscape.
               </p>
             </div>
 
             {/* Stats */}
-            <div ref={statsRef as any} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div ref={statsRef} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {/* Global Reach */}
               <div className="group cursor-pointer bg-black text-white p-4 sm:p-6 rounded-xl flex flex-col items-start hover:bg-orange-600 transition-colors duration-500">
                 <div className="flex items-start justify-between w-full">

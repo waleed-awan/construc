@@ -1,47 +1,54 @@
-"use client"
-import Link from "next/link"
-import type React from "react"
+"use client";
+import Link from "next/link";
+import type React from "react";
 
-import { Building2, Facebook, Twitter, Youtube, Paintbrush as Pinterest, ArrowUpRight } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { useReveal } from "./hook/use-reveal"
+import {
+  Building2,
+  Facebook,
+  Twitter,
+  Youtube,
+  Paintbrush as Pinterest,
+  ArrowUpRight,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useReveal } from "./hook/use-reveal";
 
 function Reveal({
   children,
   className,
   delay = 0,
 }: {
-  children: React.ReactNode
-  className?: string
-  delay?: number
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
 }) {
-  const { ref, visible } = useReveal<HTMLDivElement>({ threshold: 0.18, once: true })
+  const { ref, visible } = useReveal<HTMLDivElement>({
+    threshold: 0.18,
+    once: true,
+  });
   return (
     <div
       ref={ref}
       className={cn(
         "transform-gpu transition-all duration-700 ease-out",
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
-        className,
+        className
       )}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
     </div>
-  )
+  );
 }
 
 export default function FooterConstrc() {
   return (
-    <footer className="relative mt-16">
-      {/* Decorative white corner cutouts */}
-      <div className="pointer-events-none absolute inset-x-0 -top-8 z-10 hidden justify-between px-2 sm:flex">
-        <span className="h-16 w-32 rounded-[2rem] bg-background shadow-sm" />
-        <span className="h-16 w-32 rounded-[2rem] bg-background shadow-sm" />
-      </div>
-
+    <footer className="relative mt-16 mb-5">
       <div
-        className={cn("relative mx-2 rounded-[2rem] overflow-hidden", "bg-foreground text-primary-foreground")}
+        className={cn(
+          "relative mx-2 rounded-[2rem] overflow-hidden",
+          "bg-foreground text-primary-foreground"
+        )}
         style={{
           backgroundImage: "url(/building-2.jpg)",
           backgroundSize: "cover",
@@ -63,12 +70,15 @@ export default function FooterConstrc() {
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-chart-5">
                       <Building2 className="h-5 w-5 text-primary-foreground" />
                     </span>
-                    <span className="text-2xl font-semibold tracking-tight">Constrc</span>
+                    <span className="text-2xl font-semibold tracking-tight">
+                      Constrc
+                    </span>
                   </div>
 
                   <p className="text-sm leading-6 text-muted-foreground">
-                    our clients, our employees, and our community through our commitment to leadership, excellence in
-                    craft, and attention to detail.
+                    our clients, our employees, and our community through our
+                    commitment to leadership, excellence in craft, and attention
+                    to detail.
                   </p>
 
                   <div className="flex gap-4">
@@ -99,14 +109,24 @@ export default function FooterConstrc() {
                     <span className="mt-2 block h-[2px] w-14 bg-primary-foreground/70" />
                   </h3>
                   <ul className="grid gap-3 text-sm text-muted-foreground">
-                    {["Home", "About Us", "Our Team", "Testimonials", "Our Blog", "Contact Us"].map((label, idx) => (
+                    {[
+                      "Home",
+                      "About Us",
+                      "Our Team",
+                      "Testimonials",
+                      "Our Blog",
+                      "Contact Us",
+                    ].map((label, idx) => (
                       <li
                         key={label}
                         className="flex items-center gap-2 transform-gpu transition-all duration-500"
                         style={{ transitionDelay: `${160 + idx * 40}ms` }}
                       >
                         <span className="inline-block h-2 w-2 rounded-full border border-white/50" />
-                        <Link href="#" className="hover:text-primary-foreground">
+                        <Link
+                          href="#"
+                          className="hover:text-primary-foreground"
+                        >
                           {label}
                         </Link>
                       </li>
@@ -137,7 +157,10 @@ export default function FooterConstrc() {
                         style={{ transitionDelay: `${200 + idx * 40}ms` }}
                       >
                         <span className="inline-block h-2 w-2 rounded-full border border-white/50" />
-                        <Link href="#" className="hover:text-primary-foreground">
+                        <Link
+                          href="#"
+                          className="hover:text-primary-foreground"
+                        >
                           {label}
                         </Link>
                       </li>
@@ -154,13 +177,14 @@ export default function FooterConstrc() {
                     <span className="mt-2 block h-[2px] w-14 bg-primary-foreground/70" />
                   </h3>
                   <p className="text-sm leading-6 text-muted-foreground">
-                    our clients, our employees, and our community through our commitment.
+                    our clients, our employees, and our community through our
+                    commitment.
                   </p>
 
                   <form
                     className="space-y-4"
                     onSubmit={(e) => {
-                      e.preventDefault()
+                      e.preventDefault();
                     }}
                   >
                     <label htmlFor="newsletter-email" className="sr-only">
@@ -174,7 +198,7 @@ export default function FooterConstrc() {
                         placeholder="Your email address"
                         className={cn(
                           "w-full bg-transparent text-sm outline-none",
-                          "placeholder:text-muted-foreground/70",
+                          "placeholder:text-muted-foreground/70"
                         )}
                       />
                     </div>
@@ -187,7 +211,7 @@ export default function FooterConstrc() {
                           "bg-chart-5 text-primary-foreground shadow-[0_6px_0_rgba(0,0,0,0.2)]",
                           "transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_0_rgba(0,0,0,0.18)]",
                           "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chart-5",
-                          "active:translate-y-0",
+                          "active:translate-y-0"
                         )}
                       >
                         SUBSCRIBE
@@ -224,13 +248,8 @@ export default function FooterConstrc() {
               </div>
             </div>
           </Reveal>
-
-          {/* Rounded bottom corners mimic */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0">
-            <div className="mx-2 h-8 rounded-b-[2rem] bg-foreground" />
-          </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
