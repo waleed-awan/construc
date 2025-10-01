@@ -29,7 +29,7 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="w-full flex justify-center mt-6 relative">
+    <div className="w-full absolute flex justify-center mt-6 z-10">
       <nav className="flex items-center justify-between bg-white shadow-md border rounded-full px-6 py-3 w-[90%] max-w-6xl">
         {/* Logo */}
         <div className="flex items-center gap-2">
