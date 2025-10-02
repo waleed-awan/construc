@@ -47,12 +47,12 @@ export default function ProjectsSticky() {
         </div>
 
         {/* Big heading - improved responsive text sizing and line breaks */}
-        <h2 className="mt-3 md:mt-4 text-center font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight text-balance px-4">
+        <h2 className=" mt-3 md:mt-4 text-center font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight text-balance px-4">
           We Provide Effective <br className="hidden xs:block" /> Solution In Construction
         </h2>
 
         {items.map((item, i) => (
-          <div key={i} className="sticky top-4 sm:top-6 md:top-8 w-full flex justify-center">
+          <div key={i} className="sticky top-4 sm:top-6 md:top-6 w-full flex justify-center">
             <div
               className="relative mt-8 sm:mt-10 md:mt-12 lg:mt-14 rounded-2xl sm:rounded-[24px] md:rounded-[28px] 
               overflow-hidden bg-muted flex flex-col items-center

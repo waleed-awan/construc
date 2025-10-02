@@ -19,27 +19,75 @@ export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const menus = [
-    { title: "Home", links: [{ href: "/", label: "Main Home" }, { href: "/home2", label: "Home 2" }] },
-    { title: "About", links: [{ href: "/about/company", label: "Company" }, { href: "/about/team", label: "Team" }] },
-    { title: "Services", links: [{ href: "/services/web", label: "Web Development" }, { href: "/services/mobile", label: "Mobile Apps" }] },
-    { title: "Projects", links: [{ href: "/projects/ongoing", label: "Ongoing" }, { href: "/projects/completed", label: "Completed" }] },
-    { title: "Blog", links: [{ href: "/blog/articles", label: "Articles" }, { href: "/blog/news", label: "News" }] },
-    { title: "Shop", links: [{ href: "/shop/tools", label: "Tools" }, { href: "/shop/materials", label: "Materials" }] },
-    { title: "Contact", links: [{ href: "/contact", label: "Contact Form" }, { href: "/contact/map", label: "Our Location" }] },
+    {
+      title: "Home",
+      links: [
+        { href: "/", label: "Main Home" },
+        { href: "/home2", label: "Home 2" },
+      ],
+    },
+    {
+      title: "About",
+      links: [
+        { href: "/about/company", label: "Company" },
+        { href: "/about/team", label: "Team" },
+      ],
+    },
+    {
+      title: "Services",
+      links: [
+        { href: "/services/web", label: "Web Development" },
+        { href: "/services/mobile", label: "Mobile Apps" },
+      ],
+    },
+    {
+      title: "Projects",
+      links: [
+        { href: "/projects/ongoing", label: "Ongoing" },
+        { href: "/projects/completed", label: "Completed" },
+      ],
+    },
+    {
+      title: "Blog",
+      links: [
+        { href: "/blog/articles", label: "Articles" },
+        { href: "/blog/news", label: "News" },
+      ],
+    },
+    {
+      title: "Shop",
+      links: [
+        { href: "/shop/tools", label: "Tools" },
+        { href: "/shop/materials", label: "Materials" },
+      ],
+    },
+    {
+      title: "Contact",
+      links: [
+        { href: "/contact", label: "Contact Form" },
+        { href: "/contact/map", label: "Our Location" },
+      ],
+    },
   ];
 
   return (
-    <div className="w-full absolute flex justify-center mt-6 z-10">
+    <div className="w-full absolute flex justify-center mt-6 z-20">
       <nav className="flex items-center justify-between bg-white shadow-md border rounded-full px-6 py-3 w-[90%] max-w-6xl">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <Image src="/construc.png" alt="Logo" width={150} height={150} />
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width={50}
+            height={50}
+            className=" object-contain"
+          />
         </div>
 
         {/* Desktop Menu (only on lg screens) */}
-        <ul className="hidden lg:flex gap-6 text-gray-700 font-medium">
+        <ul className="hidden  lg:flex gap-6 text-gray-700 font-medium">
           {menus.map((menu, i) => (
-            <li key={i} className="relative group cursor-pointer">
+            <li key={i} className="relative  group cursor-pointer">
               <div className="flex items-center gap-1">
                 <span>{menu.title}</span>
                 <ChevronDown
